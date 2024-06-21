@@ -11,11 +11,11 @@ permissions:
     pattern: "*.sh"
     owner: ubuntu
     group: ubuntu
-    mode: 777
+    mode: 755
     setfacl:
       - "u:ubuntu:rwx"
       - "u:root:rwx"
-    owner: ubuntu
+    owner: root
     type:
       - file
     
@@ -23,27 +23,20 @@ permissions:
     pattern: "*.py"
     owner: ubuntu
     group: ubuntu
-    mode: 777
+    mode: 755
     setfacl:
       - "u:ubuntu:rwx"
       
-    owner: ubuntu
+    owner: root
     type:
       - file
 
 hooks:
       
-  BeforeInstall:
+  AfterInstall:
     - location: scripts/install_dependencies.sh
       timeout: 100
       runas: root
       
-  # ApplicationStop:
-  #   - location: scripts/stop-server.sh
-  #     timeout: 100
-  #     runas: root
-  # ApplicationStart:
-  #   - location: scripts/start-server.sh
-  #     timeout: 100
-  #     runas: root      
+  
       
