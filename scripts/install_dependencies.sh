@@ -13,7 +13,7 @@ if [ -z "$PID" ]; then
 else
     # Terminate the Python process
     echo "Stopping Python Flask application with PID: $PID"
-    kill $PID
+    sudo kill $PID
     echo "Application stopped."
 fi
 
