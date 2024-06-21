@@ -1,0 +1,49 @@
+version: 0.0
+os: linux
+files: 
+  - source: /
+    destination: /home/ubuntu/pythonApp/
+    overwrite: true
+file_exists_behavior: OVERWRITE
+
+permissions:
+  - object: /home/ubuntu/pythonApp/scripts
+    pattern: "*.sh"
+    owner: ubuntu
+    group: ubuntu
+    mode: 777
+    setfacl:
+      - "u:ubuntu:rwx"
+      - "u:root:rwx"
+    owner: ubuntu
+    type:
+      - file
+    
+  - object: /home/ubuntu/pythonApp
+    pattern: "*.py"
+    owner: ubuntu
+    group: ubuntu
+    mode: 777
+    setfacl:
+      - "u:ubuntu:rwx"
+      
+    owner: ubuntu
+    type:
+      - file
+
+hooks:
+      
+  BeforeInstall:
+    - location: scripts/install_dependencies.sh
+      timeout: 100
+      runas: root
+      
+  ApplicationStop:
+    - location: scripts/stop-server.sh
+      timeout: 100
+      runas: root
+  ApplicationStart:
+    - location: scripts/start-server.sh
+      timeout: 100
+      runas: root      
+      
