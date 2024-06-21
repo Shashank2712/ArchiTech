@@ -38,12 +38,12 @@ hooks:
       timeout: 100
       runas: root
       
-  ApplicationStop:
-    - location: scripts/stop-server.sh
-      timeout: 100
-      runas: root
-  ApplicationStart:
-    - location: scripts/start-server.sh
-      timeout: 100
-      runas: root      
+  # ApplicationStop:
+  #   - location: scripts/stop-server.sh
+  #     timeout: 100
+  #     runas: root
+  # ApplicationStart:
+  #   - location: scripts/start-server.sh
+  #     timeout: 100
+  #     runas: root      
       
