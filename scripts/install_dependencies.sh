@@ -1,7 +1,7 @@
 #!/bin/bash
 
 LOG_FILE="/var/log/deploy.log"
-exec > >(tee -a $LOG_FILE) 2>&1
+sudo exec > >(tee -a $LOG_FILE) 2>&1
 
 APP_DIR="/home/ubuntu/pythonApp"
 APP_SCRIPT="app.py"
