@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# Find the PID of the Python process running app.py
-PID=$(pgrep -f "python3 app.py")
+# Find the PID of the Python process running the specific app.py
+PID=$(pgrep -f "python3 /home/ubuntu/pythonApp/app.py")
 
 if [ -z "$PID" ]; then
     echo "No running Python Flask application found."
