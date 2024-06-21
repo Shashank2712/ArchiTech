@@ -13,10 +13,10 @@ echo "Starting deployment script"
 
 # Update package list and install necessary packages
 echo "Updating package list..."
-apt-get update -y
+sudo apt-get update -y
 
 echo "Installing required packages..."
-apt-get install -y python3-pip awscli
+sudo apt-get install -y python3-pip awscli
 
 # Navigate to the application directory
 cd $APP_DIR || { echo "Failed to change directory to ${APP_DIR}"; exit 1; }
@@ -31,7 +31,7 @@ source $VENV_DIR/bin/activate
 
 # Install Flask and other Python dependencies
 echo "Installing Python dependencies..."
-pip3 install -r requirements.txt
+pip3 install flask
 
 # Find the PID of the Python process running the specific app.py
 PID=$(pgrep -f "python3 $APP_DIR/$APP_SCRIPT")
@@ -54,7 +54,7 @@ sleep 5
 
 # Capture the output of the application and save it to file_from_app
 echo "Capturing output from app.py and saving to file_from_app"
-cat $NOHUP_OUT > $APP_OUTPUT_FILE
+sudo cat $NOHUP_OUT > $APP_OUTPUT_FILE
 
 # Upload file_from_app to S3 bucket
 S3_BUCKET="devops-assignment-shashank"
