@@ -4,7 +4,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def hello_world():
-    return 'Hello, World!'
+    return 'Hello, Robotic World!'
 
 @app.route('/static/<path:filename>')
 def static_files(filename):
