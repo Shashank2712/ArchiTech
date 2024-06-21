@@ -23,7 +23,7 @@ source $VENV_DIR/bin/activate
 
 # Install Flask
 echo "Installing Flask"
-pip install flask
+pip3 install flask
 
 # Find the PID of the Python process running the specific app.py
 PID=$(pgrep -f "python3 $APP_DIR/$APP_SCRIPT")
